@@ -1,0 +1,16 @@
+<h1>Movie List</h1>
+<button class="btn btn-warning" [routerLink]="['/movies', 'new']">Add a new movie</button>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Movie Title</th>
+        <th scope="col">Actions Available</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies; let idx = index">
+        <td>{{movie.title}}</td>
+        <td><button class="btn btn-warning" [routerLink]="['/movies', movie._id]">Read Reviews</button><button class="btn btn-danger" [routerLink]="['/movies', movie._id, 'review']">Write review</button></td>
+      </tr>
+    </tbody>
+</table> 

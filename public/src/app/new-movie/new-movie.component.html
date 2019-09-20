@@ -1,0 +1,62 @@
+<div class="form d-inline-block">
+  <h3>Submit a movie and add your review</h3>
+  <form (submit)="movieSubmit()">
+    <div class="form-group">
+      <label>Movie Title:</label>
+      <input type="text" class="form-control" name="newMovie.title" [(ngModel)]="newMovie.title"
+        placeholder="Enter title" required minlength="4" #title="ngModel">
+      <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+        <span *ngIf="title.errors.required">
+            Title is required.
+        </span>
+        <span *ngIf="title.errors.minlength">
+            Title must be at least 4 characters long.
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Your Name:</label>
+      <input type="text" class="form-control" name="newMovie.ratings.name" [(ngModel)]="newMovie.ratings.name"
+        placeholder="Enter name" required minlength="4" #name="ngModel">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <span *ngIf="name.errors.required">
+            Name is required.
+        </span>
+        <span *ngIf="name.errors.minlength">
+            Name must be at least 4 characters long.
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Stars:</label>
+      <select class="form-control" id="exampleFormControlSelect1" name="newMovie.ratings.rating"
+        [(ngModel)]="newMovie.ratings.rating" required #rating="ngModel">
+        <option value="1">1 star</option>
+        <option value="2">2 stars</option>
+        <option value="3">3 stars</option>
+        <option value="4">4 stars</option>
+        <option value="5">5 stars</option>
+      </select>
+      <div *ngIf="rating.invalid && (rating.dirty || rating.touched)" class="alert alert-danger">
+        <span *ngIf="rating.errors.required">
+            Rating is required.
+        </span>
+    </div>
+    </div>
+    <div class="form-group">
+      <label>Your Review:</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="newMovie.ratings.content"
+        [(ngModel)]="newMovie.ratings.content" placeholder=" Type your comment here" required minlength="4" #content="ngModel"></textarea>
+        <div *ngIf="content.invalid && (content.dirty || content.touched)" class="alert alert-danger">
+          <span *ngIf="content.errors.required">
+              Review is required.
+          </span>
+          <span *ngIf="content.errors.minlength">
+              Review must be at least 4 characters long.
+          </span>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button class="button btn btn-danger" [routerLink]="['/movies']">Cancel</button>
+  </form>
+</div>
